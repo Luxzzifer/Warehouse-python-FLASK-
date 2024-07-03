@@ -17,10 +17,5 @@ Enter MongoDB DatabaseProject on (DB_PROJECT = '')
 Enter MongoDB Collection on (COLLECTION1 = '')
 
 
-#MongoDB
-#Python
-#Flask
-#Warehouse
-
 
 
