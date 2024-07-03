@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produk Keluar</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px; 
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+      }
+
+      h2 {
+        font-size: 24px;
+        color: #333;
+        margin-top: 0;
+        text-align: center;
+      }
+
+      form {
+        width: 100%;
+        margin-bottom: 20px; 
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      input[type="date"],
+      select {
+        width: calc(100% - 16px);
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 200px;
+        background-color: #f0f0f0;
+        padding-top: 20px;
+        z-index: 1;
+      }
+
+      .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .sidebar ul li {
+        padding: 8px 16px;
+      }
+
+      .sidebar ul li a {
+        text-decoration: none;
+        color: #333;
+        display: block;
+      }
+
+      .sidebar ul li a:hover {
+        background-color: #ddd;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 10px;
+        }
+      }
+
+      
+      td.editable {
+        position: relative;
+        cursor: pointer;
+      }
+
+      td.editable input,
+      td.editable select {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(100% - 16px);
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+        z-index: 2;
+      }
+
+      td.editable.active input,
+      td.editable.active select {
+        display: block;
+      }
+
+      td.editable span {
+        display: block;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+   
+    <div class="sidebar">
+      <ul>
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/input_produk.html">Input produk</a></li>
+        <li><a href="/produk_keluar.html">Produk keluar</a></li>
+        <li><a href="/laporan.html">Laporan</a></li>
+      </ul>
+    </div>
+
+    
+    <div class="container">
+      <h2>Formulir Produk Keluar</h2>
+
+      
+      <form action="/produk_keluar.html" method="post">
+        <label for="id_produk_keluar">ID Produk Keluar:</label><br />
+        <input
+          type="text"
+          id="id_produk_keluar"
+          name="id_produk_keluar"
+          required
+        /><br /><br />
+
+        <label for="nama_produk">Nama Produk:</label><br />
+        <select id="nama_produk" name="nama_produk" required>
+          {% for produk in produk_list %}
+          <option value="{{ produk['Nama_Produk'] }}">
+            {{ produk['Nama_Produk'] }}
+          </option>
+          {% endfor %}</select
+        ><br /><br />
+
+        <label for="stok">Stok:</label><br />
+        <input type="number" id="stok" name="stok" required /><br /><br />
+
+        <label for="cabang_toko">Cabang Toko:</label><br />
+        <input
+          type="text"
+          id="cabang_toko"
+          name="cabang_toko"
+          required
+        /><br /><br />
+
+        <label for="tanggal_keluar">Tanggal Keluar:</label><br />
+        <input
+          type="date"
+          id="tanggal_keluar"
+          name="tanggal_keluar"
+          required
+        /><br /><br />
+
+        <input type="submit" value="Submit" />
+      </form>
+
+      
+      {% if message %}
+      <p>{{ message }}</p>
+      {% endif %}
+
+     
+      <table>
+        <caption>
+          Data Produk Keluar
+        </caption>
+        <thead>
+          <tr>
+            <th>ID Produk Keluar</th>
+            <th>Nama Produk</th>
+            <th>Stok</th>
+            <th>Cabang Toko</th>
+            <th>Tanggal Keluar</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in produk_keluar_list %}
+          <tr>
+            <td>{{ data['ID_Produk_Keluar'] }}</td>
+            <td>{{ data['Nama_Produk'] }}</td>
+            <td class="editable stok" ondblclick="makeEditable(this);">
+              <span>{{ data['Stok'] }}</span>
+              <input type="number" value="{{ data['Stok'] }}" />
+            </td>
+            <td class="editable cabang_toko" ondblclick="makeEditable(this);">
+              <span>{{ data['Cabang_Toko'] }}</span>
+              <input type="text" value="{{ data['Cabang_Toko'] }}" />
+            </td>
+            <td
+              class="editable tanggal_keluar"
+              ondblclick="makeEditable(this);"
+            >
+              <span>{{ data['Tanggal_Keluar'] }}</span>
+              <input type="date" value="{{ data['Tanggal_Keluar'] }}" />
+            </td>
+            <td>
+              <button onclick="deleteData('{{ data['ID_Produk_Keluar'] }}')">
+                Delete
+              </button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      
+
+      // Function to delete data
+      function deleteData(id) {
+        if (confirm("Are you sure you want to delete this entry?")) {
+          fetch(`/delete_produk_keluar/${id}`, {
+            method: "DELETE",
+          })
+            .then((response) => response.json())
+            .then((result) => {
+              if (result.success) {
+                alert("Data deleted successfully!");
+                location.reload(); 
+              } else {
+                alert("Failed to delete data. Please try again later.");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        }
+      }
+
+    </script>
+  </body>
+</html>

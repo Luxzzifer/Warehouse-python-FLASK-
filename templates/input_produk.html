@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Input Produk</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 200px; 
+      background-color: #f0f0f0;
+      padding-top: 20px;
+      z-index: 1;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      padding: 8px 16px;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #ddd;
+    }
+
+    .content {
+      margin-left: 200px; 
+      padding: 20px;
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #333;
+      margin-top: 0;
+    }
+
+    form {
+      width: 80%;
+      max-width: 600px; /* Maksimum lebar form */
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form input[type="date"] {
+      width: calc(100% - 16px); 
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    form input[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    form input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #ccc;
+      margin: 20px 0;
+    }
+
+    table {
+      width: 100%;
+      max-width: 800px; 
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px; 
+
+    table th,
+    table td {
+      border: 1px solid #ccc;
+      padding: 8px; 
+      text-align: center;
+    }
+
+    table th {
+      background-color: #f2f2f2;
+      font-size: 16px;
+    }
+
+    table td {
+      font-size: 14px;
+    }
+
+    .action-form {
+      display: flex;
+      align-items: center;
+    }
+
+    .action-form form {
+      margin-right: 5px;
+    }
+
+    .action-form input[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .action-form input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .action-links {
+      display: flex;
+    }
+
+    .action-links a {
+      background-color: #4caf50;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 14px;
+      text-decoration: none;
+      margin-right: 5px;
+    }
+
+    .action-links a:hover {
+      background-color: #45a049;
+    }
+  </style>
+
+
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <ul>
+      <li><a href="/">Dashboard</a></li>
+      <li><a href="/input_produk.html">Input produk</a></li>
+      <li><a href="/produk_keluar.html">Produk keluar</a></li>
+      <li><a href="/laporan.html">Laporan</a></li>
+    </ul>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <h2>Formulir Input Produk</h2>
+
+    <form action="/input_produk.html" method="post">
+      <label for="id_produk">ID Produk:</label><br />
+      <input
+        type="text"
+        id="id_produk"
+        name="id_produk"
+        required
+      /><br /><br />
+
+      <label for="nama_produk">Nama Produk:</label><br />
+      <input
+        type="text"
+        id="nama_produk"
+        name="nama_produk"
+        required
+      /><br /><br />
+
+      <label for="kode_produk">Kode Produk:</label><br />
+      <input
+        type="text"
+        id="kode_produk"
+        name="kode_produk"
+        required
+      /><br /><br />
+
+      <label for="stok">Stok:</label><br />
+      <input type="number" id="stok" name="stok" required /><br /><br />
+
+      <label for="harga">Harga:</label><br />
+      <input type="number" id="harga" name="harga" required /><br /><br />
+
+      <label for="tanggal_masuk">Tanggal Masuk:</label><br />
+      <input
+        type="date"
+        id="tanggal_masuk"
+        name="tanggal_masuk"
+        required
+      /><br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <hr />
+
+    <h2>Data Produk yang Telah Dimasukkan</h2>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID Produk</th>
+          <th>Nama Produk</th>
+          <th>Kode Produk</th>
+          <th>Stok</th>
+          <th>Harga</th>
+          <th>Tanggal Masuk</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for produk in produk_list %}
+        <tr>
+          <td>{{ produk['ID_Produk'] }}</td>
+          <td contenteditable="true" id="nama_produk_{{ produk['ID_Produk'] }}">{{ produk['Nama_Produk'] }}</td>
+          <td contenteditable="true" id="kode_produk_{{ produk['ID_Produk'] }}">{{ produk['Kode_Produk'] }}</td>
+          <td contenteditable="true" id="stok_{{ produk['ID_Produk'] }}">{{ produk['Stok'] }}</td>
+          <td contenteditable="true" id="harga_{{ produk['ID_Produk'] }}">{{ produk['Harga_Produk'] }}</td>
+          <td contenteditable="true" id="tanggal_masuk_{{ produk['ID_Produk'] }}">{{ produk['Tanggal_masuk'] }}</td>
+          <td class="action-form">
+            <div class="action-links">
+                <a href="#" onclick="updateProduk('{{ produk['ID_Produk'] }}')">Update</a>
+                <a href="#" onclick="deleteProduk('{{ produk['ID_Produk'] }}')">Delete</a>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% if message %}
+    <div>{{ message }}</div>
+    {% endif %}
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+
+    function deleteProduk(idProduk){
+        if(confirm('Apakah Anda yakin ingin menghapus produk ini?')){
+
+            $.ajax({
+                url: '/delete_produk/' + idProduk,
+                type: 'POST',
+                success: function(response){
+                    console.log('Delete Berhasil: ' + response);
+                    location.reload();
+                },
+                error: function(xhr, status, error){
+                    console.error('Delete gagal: ' + status + ', Error ' + error);
+                }
+            });
+        }
+        return false;
+    }
+    // Fungsi untuk menangani klik pada tautan "Update"
+    function updateProduk(idProduk) {
+      // Mengambil nilai baru dari tabel yang diedit
+      var namaProduk = $('#nama_produk_' + idProduk).text();
+      var kodeProduk = $('#kode_produk_' + idProduk).text();
+      var stok = $('#stok_' + idProduk).text();
+      var harga = $('#harga_' + idProduk).text();
+      var tanggalMasuk = $('#tanggal_masuk_' + idProduk).text();
+
+      // Data yang akan dikirim ke backend
+      var data = {
+        'ID_Produk': idProduk,
+        'Nama_Produk': namaProduk,
+        'Kode_Produk': kodeProduk,
+        'Stok': stok,
+        'Harga_Produk': harga,
+        'Tanggal_masuk': tanggalMasuk
+      };
+
+      // Mengirim permintaan AJAX untuk update ke backend
+      $.ajax({
+        url: '/update_produk/' + idProduk,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function(response) {
+          console.log('Update berhasil: ' + response);
+          
+          location.reload(); // memuat ulang halaman setelah update
+        },
+        error: function(xhr, status, error) {
+          console.error('Update gagal: ' + status + ', Error: ' + error);
+         
+        }
+      });
+    }
+  </script>
+</body>
+</html>

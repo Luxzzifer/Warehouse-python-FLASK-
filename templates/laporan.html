@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laporan Produk</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px; /* Maksimum lebar kontainer */
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+        margin-top: 20px;
+      }
+
+      h2 {
+        font-size: 24px;
+        color: #333;
+        margin-top: 0;
+        text-align: center;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      .header {
+        margin-bottom: 10px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .table-container {
+        margin-top: 20px;
+      }
+
+      .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 200px;
+        background-color: #f0f0f0;
+        padding-top: 20px;
+        z-index: 1;
+      }
+
+      .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .sidebar ul li {
+        padding: 8px 16px;
+      }
+
+      .sidebar ul li a {
+        text-decoration: none;
+        color: #333;
+        display: block;
+      }
+
+      .sidebar ul li a:hover {
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <ul>
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/input_produk.html">Input produk</a></li>
+        <li><a href="/produk_keluar.html">Produk keluar</a></li>
+        <li><a href="/laporan.html">Laporan</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <h2>Laporan Produk Masuk dan Produk Keluar</h2>
+
+      <!-- Tabel untuk Laporan Produk Masuk -->
+      <div class="table-container">
+        <div class="header">Laporan Produk Masuk</div>
+        <table>
+          <thead>
+            <tr>
+              <th>ID Produk</th>
+              <th>Nama Produk</th>
+              <th>Kode Produk</th>
+              <th>Stok</th>
+              <th>Harga</th>
+              <th>Tanggal Masuk</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for produk in produk_masuk_list %}
+            <tr>
+              <td>{{ produk['ID_Produk'] }}</td>
+              <td>{{ produk['Nama_Produk'] }}</td>
+              <td>{{ produk['Kode_Produk'] }}</td>
+              <td>{{ produk['Stok'] }}</td>
+              <td>{{ produk['Harga_Produk'] }}</td>
+              <td>{{ produk['Tanggal_masuk'] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tabel untuk Laporan Produk Keluar -->
+      <div class="table-container">
+        <div class="header">Laporan Produk Keluar</div>
+        <table>
+          <thead>
+            <tr>
+              <th>ID Produk Keluar</th>
+              <th>ID Produk</th>
+              <th>Nama Produk</th>
+              <th>Stok Keluar</th>
+              <th>Cabang Toko</th>
+              <th>Tanggal Masuk</th>
+              <th>Tanggal Keluar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for produk in produk_keluar_list %}
+            <tr>
+              <td>{{ produk['ID_Produk_Keluar'] }}</td>
+              <td>{{ produk['ID_Produk'] }}</td>
+              <td>{{ produk['Nama_Produk'] }}</td>
+              <td>{{ produk['Stok'] }}</td>
+              <td>{{ produk['Cabang_Toko'] }}</td>
+              <td>{{ produk['Tanggal_Masuk'] }}</td>
+              <td>{{ produk['Tanggal_Keluar'] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
